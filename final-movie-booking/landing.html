@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie System | Homepage</title>
+	<link rel="icon" href="data:;base64,iVBORwOKGO=" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="style/homepage.css">
+	<script type="text/javascript" src="scripts/myjs.js"></script>
+	<script type="text/javascript">
+		
+		function validatePassword(){
+			var pass = document.getElementById("password");
+			var confirm = document.getElementById("confirmPassword");
+
+			if(pass.value != confirm.value){
+				alert("Passwords do not match");
+				return false;
+			}else{
+				return true;
+			}
+			
+		}
+
+$(function(){
+
+		//Live check for Register form
+		$("#username, #email").keyup(function(){
+
+		var name = $("#username").val();
+		var mail = $("#email").val();
+
+		$.ajax({
+  			url: "check_register.php",
+  			type: "POST",
+  			data: {username: name,
+  			       email: mail},
+  			success: function(data){
+
+  				if(data != '0'){
+  					//Add a class to span element
+  					$("#usertext").removeClass('has-success').addClass('has-error');
+  					$("#usertext").html("Username/Email not available");
+  					//Disable click on register button
+  					$("#registerbtn").attr("disabled", "true");
+
+  				} else {
+  					$("#usertext").removeClass('has-error').addClass('has-success');
+  					$("#usertext").html("Username/Email available");
+  					$("#registerbtn").removeAttr("disabled");
+				}
+			}
+		});	
+	})
+
+		//Check for login form
+		$("#loginpass, #loginame").keyup(function(){
+
+		var name = $("#loginame").val();
+		var pass = $("#loginpass").val();
+
+			$.ajax({
+  			url: "check_login.php",
+  			type: "POST",
+  			data: {username: name,
+  				   password: pass},
+  			success: function(data){
+
+  			if(data != 0){
+  				//There is a record
+  				$("#logintext").removeClass('has-error').addClass('has-success');
+  				$("#logintext").html("Username/Password correct");
+  				$("#loginbtn").removeAttr("disabled");
+
+  			} else {
+
+  				$("#logintext").removeClass('has-success').addClass('has-error');
+  				$("#logintext").html("Username/Password incorrect");
+  				//Disable click on login button
+  				$("#loginbtn").attr("disabled", "true");
+			}
+		}
+	});	
+})
+
+})
+	</script>
+</head>
+<body>
+
+	<h2 style="font-family:Comic Sans MS;">Book Your Show!</h2>
+
+	<div class="flex">
+		<button id="register" class="flex-item">Register</button>
+		<button id="login" class="flex-item">Log In</button>
+	</div>
+
+	<!--Registration Form  -->
+	<div class="popup popup-register">
+
+		<form onsubmit="return validatePassword()" action="register.php" method="POST">
+
+			<img src="img/close_btn.png" alt="Close" class="close">
+
+			<div class="content">
+
+			<p>
+				<label>Username</label>
+				<input
+				id    = "username"
+				class = "check"
+				type  ="text" 
+				pattern = ".{4,10}"
+				name = "username" 
+				placeholder = "Enter your username"  
+				title = "Must contain at least 4 alpha numeric characters" 
+				required><br/>
+				<!-- For error reporting -->
+				<span id="usertext"></span>
+			</p>
+
+			<p>
+				<label>Email</label>
+				<input
+				id = "email"
+				class = "check"
+				type = "email" 
+				name = "email" 
+				placeholder = "Enter Your Email" 
+				required><br/>
+			</p>
+
+			<p>
+				<label>Phone number</label>
+				<input 
+				type = "text" 
+				name = "phoneno" 
+				placeholder = "Optional" 
+				pattern = ".0|.{8}">
+			</p>
+
+			<p>
+				<label>Password</label>
+				<input 
+				id = "password" 
+				type = "password" 
+				name = "password"
+				pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+				placeholder = "Type Password" 
+				title = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+				required><br/>
+			</p>
+
+			<p>
+				<label>Confirm Password</label>
+				<input 
+				id = "confirmPassword" 
+				type = "password" 
+				name = "confirmpassword"
+				pattern = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+				placeholder = "Confirm Your Password" 
+				title = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+				required><br/>
+			</p>
+			</div>
+
+			<div class="btn">
+
+				<input 
+				id = "registerbtn" 
+				name = "register" 
+				type = "submit" 
+				value = "Register">
+
+				<input 
+				type = "reset" 
+				value = "Reset">
+
+			</div>		
+		</form>
+	</div>
+
+	<!-- Log In Form -->
+	<div class="popup popup-login">
+
+		<form action="login.php" method="POST">
+			<img src="img/close_btn.png" alt="Close" class="close">
+
+			<div class="content">
+			<p>
+				<label>Username</label>
+				<input
+				id = "loginame" 
+				type = "text" 
+				name = "username" 
+				required><br/>
+				<!-- For error reporting -->
+				<span id="logintext"></span>
+			</p>
+
+			<p>
+				<label>Password</label>
+				<input
+				id = "loginpass" 
+				type = "password" 
+				name = "password" 
+				required><br/>
+			</p>
+			</div>
+
+			<div class="btn">
+				<input
+				id = "loginbtn" 
+				type = "submit" 
+				name = "login" 
+				value = "Login">
+				<input 
+				type = "reset"  
+				name = "reset"    
+				value = "Reset">
+			</div>
+		</form>
+	</div>	
+</body>
+</html>

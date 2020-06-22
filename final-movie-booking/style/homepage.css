@@ -1,0 +1,108 @@
+body {
+	background-image: url("../img/background-wp.jpg");
+}
+
+h2 {
+	color: #FFFFFF;
+	font-size: 55px;
+	text-align: center;
+}
+
+.flex {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.flex-item + .flex-item {
+  margin-left: 10px;
+}
+
+button {
+  margin-top: 15px;
+  background-color: #704d00;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  cursor: pointer;
+}
+
+.popup {
+
+	position: relative;
+	background-color: #FFF;
+	width: 500px;
+	height: 270px;
+	border-radius: 5px;
+	padding: 20px;
+	margin-left: 360px;
+	margin-top: -150px;
+}
+
+p {
+	display: table-row;
+	height: 50px;
+}
+.content label{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	display: table-cell;
+}
+.content input{
+	box-sizing: border-box;
+	box-shadow: 12px;
+	height: 30px;
+	width: 215px;
+	border-radius: 5px;
+	border-bottom: 2px solid #704d00;
+	margin-left: 20px;
+	display: table-cell;
+}
+.popup-login .content {
+	margin-top: 40px;
+}
+.btn input{
+	border-radius: 4px;
+	padding: 5px;
+	border-style: solid;
+	margin-top: -25px;
+	margin-left: 110px;
+}
+
+.btn input[type="submit"]{
+	width: 95px;
+}
+
+.btn input[type="reset"]{
+	width: 95px;
+}
+
+.btn input:hover {
+	background-color: #704d00;
+}
+
+.close {
+	cursor: pointer;
+	width: 35px;
+	height: 40px;
+	position: absolute;
+	top: -15px;
+	right: -15px;
+}
+
+#usertext, #logintext {
+	margin-left : 18px;
+}
+
+.has-error{
+	color: red;
+}
+.has-success{
+	color: green;
+}
