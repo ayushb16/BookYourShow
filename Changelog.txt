@@ -1,0 +1,45 @@
+ORIGINAL AUTHOR: https://codepen.io/emoreno911/pen/yXvZxd
+Username: admin
+Password: moserversaAB12
+
+Normal user:
+Username: John Doe
+Password: moserversaAB1
+
+***************************************************************CHANGELOG****************************************************************************
+Changed the total function to reflect Mauritian Rupees(MUR). One ticket costs Rs250.
+Added an outline color property to scroll buttons. When clicked, the color will turn to black.
+Added another category Sci-Fi which displays movies of that genre.
+Added a reload function after 3 seconds when seats are booked, and if nothing is selected, it won't checkout.
+Replaced two icons on Saturday and Sunday.
+Added new movies' information using API key requested from https://developers.themoviedb.org/3
+Added app background to local directory(no need of Internet to retrieve background wallpaper).
+Added on hover for each seat to turn color to grey, cannot hover on seats that are already taken.
+Added release date for each movie to show when cover is clicked.
+Added runtime for each movie to show on cover.
+Added icon in tab.Reel icon referenced by film.png in head tag of html document.
+Moved pictures to img folder and corrected file paths.
+The Days Panel is now fully functional. In the Coming Soon Tab, you can only see the poster, cannot click on it.
+New font style and accent color. (To better fit the whole UI)
+
+Added forms for user to register/log in with validation capabilities.
+User cannot access My Account panel unless s/he is logged in.
+User can now log out from My Account and the session is destroyed.
+Live check for username and email and disables register button
+User cannot access index.php unless s/he is logged in
+When user checks out, it creates a log of movie bookings which can be accessed from My Account => Bookings
+
+Booking of seats are now made permanent! Can also book same movies on different days, each having its own set of bookings.
+Implemented the Search functionality. Filter movies by their exact name, not partial!
+*The Search box is only toggled when viewing on Categories section: to avoid conflict with Days Panel. That is why, click function is disabled.
+
+Users can now send the support team an email and the script will send an automatic "no-reply" to the user confirming that the email was received.
+Users can now change their usernames from the "Account" panel!
+SQL statements were converted to prepared statements to prevent SQL Injection where appropriate.(see check_register and check_login)
+Admin panel has been designed using BOOTSTRAP. The admin panel has in-site navigation capabilities with functionalities like "Viewing Bookings","Resetting Movie Seats", and "Deleting Users". Other related updation/deletion are also made based on the operation selected to keep the system in a consistent state. For example, deleting a user will also delete bookings made by that user.
+
+Designed a basic homepage(welcome.html) to give overview of business and provides a button which links to Register/Log in system. 
+The 'selected' class will only be toggled when viewing EITHER on Days Panel OR Categories Panel, not both.
+The categories section is now made to be viewed only. That is, you can only book movies through the Days Panel.
+When a cover is clicked and data is displayed, the Days menu is temporarily disabled from any click activity. That is, to re-navigate, you have to click on "Arrow Back Icon". This is to avoid mixing up variables value(ie Day) when booking.
+*Live authentication of Username and Password upon Login. Disables Login button if any field contains incorrect data.
