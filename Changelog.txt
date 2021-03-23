@@ -43,3 +43,5 @@ The 'selected' class will only be toggled when viewing EITHER on Days Panel OR C
 The categories section is now made to be viewed only. That is, you can only book movies through the Days Panel.
 When a cover is clicked and data is displayed, the Days menu is temporarily disabled from any click activity. That is, to re-navigate, you have to click on "Arrow Back Icon". This is to avoid mixing up variables value(ie Day) when booking.
 *Live authentication of Username and Password upon Login. Disables Login button if any field contains incorrect data.
+
+Test line
